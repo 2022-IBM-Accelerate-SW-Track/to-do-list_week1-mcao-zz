@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, TextField } from "@mui/material";
 
 class AddTodo extends Component {
     // A local react state of the this component with a content property set to nothing.
@@ -12,9 +13,11 @@ class AddTodo extends Component {
     // "event" is the defined action a user takes. In this case, the event is triggered when the user types something
     // into the text field.
     handleChange = (event) => {
+
       this.setState({
         content: event.target.value,
       });
+      console.log(this.state)
     };
     // The handleSubmit function collects the forms input and puts it into the react state.
     // event.preventDefault() is called to prevents default event behavior like refreshing the browser.
@@ -37,10 +40,23 @@ class AddTodo extends Component {
         // an OnClick event.
         // 3. The value of the text field also should reflect the local state of this component.
         <div>
-          
+        <TextField
+        label="Add New Item"
+        variant="outlined"
+        onChange={this.handleChange}
+        value={this.state.content}
+      />
+      <Button
+        style={{ marginLeft: "10px" }}
+        onClick={this.handleSubmit}
+        variant="contained"
+        color="primary"
+      >
+        Add
+      </Button>
         </div>
       );
     }
   }
-  
+
   export default AddTodo;
